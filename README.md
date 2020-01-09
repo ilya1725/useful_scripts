@@ -2,7 +2,7 @@
 
 ### What is this repository for? ###
 
-* Just a set of scripts that may be useful. In different languages.
+* Just a set of scripts that may be useful. In different scripting languages.
 
 ### How do I get set up? ###
 
