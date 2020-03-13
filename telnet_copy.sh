@@ -8,8 +8,8 @@ set timeout 10
 set verbose 0
 proc usage {} {
     puts "Transfer files using ftp"
-    puts "usage: eftp [-v] get <system> <remote file> <local file>
-    puts "       eftp [-v] put <system> <local file> <remote file>
+    puts "usage: eftp [-v] get <system> <remote file> <local file>"
+    puts "       eftp [-v] put <system> <local file> <remote file>"
     exit 1
 }
 
@@ -25,10 +25,10 @@ if {$num_arg != 4} {
     usage
 }
 
-set cmd     [lindex $argv [expr $verbose + 0]]
-set target  [lindex $argv [expr $verbose + 1]]
-set file1   [lindex $argv [expr $verbose + 2]]
-set file2   [lindex $argv [expr $verbose + 3]]
+set cmd     [lindex $argv [expr $verbose + 0]]
+set target  [lindex $argv [expr $verbose + 1]]
+set file1   [lindex $argv [expr $verbose + 2]]
+set file2   [lindex $argv [expr $verbose + 3]]
 
 if {$cmd != "get" && $cmd != "put"} {
     puts "Invalid command"
@@ -119,4 +119,4 @@ expect "Goodbye."
 
 exp_wait
 if {$verbose} { puts "Result $ftp_result" }
-exit  $ftp_result
+exit $ftp_result
