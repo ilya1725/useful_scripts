@@ -51,7 +51,7 @@ fi
 
 # do the work
 eval "git checkout master && git pull --rebase"
-eval "git checkout ${target_branch}"
+eval "git checkout ${curr_branch}"
 result=$(eval "git merge master")
 
 exit "$?"
