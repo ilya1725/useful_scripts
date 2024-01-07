@@ -4,7 +4,7 @@
 # Pull the latest and merge current branch with master
 #
 
-verbose=0
+verbose=""
 target_branch=""
 
 usage() {
@@ -20,7 +20,7 @@ while getopts "hvb:" option; do
             usage
             ;;
         v)
-            verbose=1
+            verbose=" -v"
             ;;
         b)
             target_branch=$OPTARG
@@ -40,8 +40,8 @@ done
 curr_branch=$(eval "git rev-parse --abbrev-ref HEAD")
 
 # Get the current branch, if needed
-if [ "${target_branch}" = "" ]; then
-    if [ "${curr_branch}" = "master" ]; then
+if [ "${target_branch}" == "" ]; then
+    if [ "${curr_branch}" == "master" ]; then
         echo "Already on master"
         exit 1
     fi
@@ -52,6 +52,6 @@ fi
 # do the work
 eval "git checkout master && git pull --rebase"
 eval "git checkout ${curr_branch}"
-result=$(eval "git merge master")
+result=$(eval "git merge ${verbose} master")
 
 exit "$?"

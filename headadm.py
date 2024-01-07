@@ -3,7 +3,7 @@
 """
     System control script.
     This script allows users to change different parameters of the local/remote server.
-    It uses awailable utilities such as iDRAC or others.
+    It uses available utilities such as iDRAC or others.
 
     General options:
         -d, --dry-run: Don't execute, show the rules.
@@ -60,7 +60,7 @@ def subprocess_capture(command, shell=False):
 
     result = subproc.communicate()
     return CaptureResult(result[0], result[1], subproc.returncode)
-    
+
 ###############################################################################
 class CleanFile(file):
     """
@@ -161,7 +161,7 @@ class RacAdm(object):
                 os.environ["SSH_ASKPASS"] = ''
                 os.environ["DISPLAY"] = ''
 
-                p = pexpect.spawn ("ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null %s@%s 'racadm %s'" % 
+                p = pexpect.spawn ("ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null %s@%s 'racadm %s'" %
                                     (self.user, self.system, command))
                 p.setecho(True)
                 p.logfile_read = self.fout
@@ -227,7 +227,7 @@ def main():
         print ("Script version: %s" % VER_STRING)
         return 0
 
-    fout = None    
+    fout = None
     if (options.log_file != None):
         fout = CleanFile (options.log_file, 'w')
 
@@ -238,7 +238,7 @@ def main():
 
     if (racadm.is_error()):
         return 1
-        
+
     return 0
 
 if __name__ == '__main__':
